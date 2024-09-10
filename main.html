@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width" />
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <title>モンティホール問題</title>
+    <style>
+
+    	/*
+        *{ margin: 0; padding: 0; }
+
+        input,
+		button,
+		select,
+		textarea {
+		  -webkit-appearance: none;
+		  -moz-appearance: none;
+		  appearance: none;
+		  background: transparent;
+		  border: none;
+		  border-radius: 0;
+		  font: inherit;
+		  outline: none;
+		}
+
+		textarea {
+		  resize: vertical;
+		}
+
+		input[type='checkbox'],
+		input[type='radio'] {
+		  display: none;
+		}
+
+		input[type='submit'],
+		input[type='button'],
+		label,
+		button,
+		select {
+		  cursor: pointer;
+		}
+
+		select::-ms-expand {
+		  display: none;
+		}
+
+		*/
+
+        body {
+        	background-color: #fff;
+        	text-align: center;
+        	margin: 0;
+        	padding: 0;
+        	margin-top: 40px;
+        	margin-bottom: 80px;
+        }
+        h2{
+        	color: #000;
+        	margin: 0;
+        }
+        p{
+        	color: #000;
+        	margin-top: 20px;
+        }
+
+        input[type=number]{
+        	width: 100px;
+        	margin-left: 10px;
+        }
+
+        input[type=button]{
+			margin-top: 30px;
+		}
+
+		.wrap{
+			background-color: #f1f1f1;
+			padding: 30px 0;
+        	margin-top: 30px;
+		}
+    </style>
+</head>
+<body>
+
+	<form id="select" name="select">
+	    <span>試行回数</span><input id="number_input" type="number" name="number" min="0" max="100000" step="1"><br>
+	    <span>ドアの数</span><input id="door_input" type="number" name="door_number" value="3"><br>
+	    <p>【オプション】</p>
+	    <input type="checkbox" name="options" id="options"><span style="color: #000">司会者は1つだけ残し、他のハズレのドアを全て開く</span><br>
+	    <input type="checkbox" name="random" id="random"><span style="color: #000">司会者は完全にランダムにドアを選ぶ</span><br>
+	    <input class="ok" type="button" value="実行" onClick="check()">
+	</form>
+
+	<div class="wrap">
+		<h2>実行結果</h2>
+		<p>
+			ドアを変えなかった場合:<span id="NoChange">0</span>回<br>
+			ドアを変えた場合:<span id="Change">0</span>回
+		</p>
+	</div>
+
+
+
+<script>
+
+$(function(){
+  $('#number_input').on('mouseup keyup', function(e){
+    var month = parseInt($(this).val());
+    var monthMax = parseInt($(this).attr('max'));
+    var monthMin = parseInt($(this).attr('min'));
+    if(month > monthMax){ $(this).val(monthMax); }
+    if(month < monthMin){ $(this).val(monthMin); }
+  });
+});
+
+</script>
+
+<script src="simulation.js"></script>
+
+</body>
+</html>
