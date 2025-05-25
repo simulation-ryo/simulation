@@ -7,10 +7,13 @@
 
 body {
   font-family: monospace;
-  user-select: none;
   background-color: #f4f4f4;
   line-height: 1.6;
   overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 body img {
