@@ -21,15 +21,51 @@ body img {
 }
 
 /* ヘッダー */
-.header {
-  background: rgba(255, 174, 201, 0.8);
-  color: #fff;
-  text-align: center;
+#header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 60px;
   padding: 10px 0;
-  position: sticky;
-  top: 0;
+  text-align: center;
+  color: #fff;
+  background: #ffaec9;
   z-index: 1000;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  /* 非表示時のアニメーション */
+  transform: translateY(0);
+  transition: transform 0.3s ease-out;
+}
+
+#header.hide-header {
+  transform: translateY(-125%);
+}
+
+#header .logo {
+  height: 50px;
+  width: auto;
+}
+
+#header .header-title {
+  display: inline-block;
+}
+
+#header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-image: url(https://simulation-ryo.github.io/simulation/vote/img/triangle.png);
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  z-index: 1;
 }
 
 .header-img-container {
@@ -47,20 +83,6 @@ body img {
   position: relative;
   margin-top: 0;
   background-color: #ffaec9;
-}
-
-.g-nav::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -15px;
-  left: 0;
-  width: 100%;
-  height: 15px;
-  background-image: url(https://simulation-ryo.github.io/simulation/vote/img/triangle.png);
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  z-index: 1;
 }
 
 .g-nav ul {
