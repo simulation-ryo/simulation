@@ -42,7 +42,7 @@ body img {
 }
 
 #header.hide-header {
-  transform: translateY(-125%);
+  transform: translateY(-150%);
 }
 
 #header .logo {
