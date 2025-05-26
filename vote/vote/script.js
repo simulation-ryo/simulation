@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const headerHeight = header.offsetHeight; // ヘッダーの高さを取得
 
         // 下にスクロールしている場合
-        if (currentScrollY > lastScrollY && currentScrollY > headerHeight) {
+        if (currentScrollY > lastScrollY && currentScrollY > headerHeight - 40) {
             header.classList.add('hide-header'); // 'hide-header' クラスを追加して非表示にする
         }
         // 上にスクロールしている場合、またはページの最上部に戻った場合

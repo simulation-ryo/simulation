@@ -74,7 +74,8 @@ body img {
 
 .header-img {
   display: block;
-  margin-top: 60px;
+  padding-top: 60px;
+  background-color: #ffaec9;
   width: 100%;
   height: auto;
 }
