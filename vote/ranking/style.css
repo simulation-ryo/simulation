@@ -29,20 +29,19 @@ body img {
   padding: 10px 0;
   text-align: center;
   color: #fff;
-  background: #ffaec9;
+  background: transparent;
   z-index: 1000;
-
+  
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-
-  /* 非表示時のアニメーション */
-  transform: translateY(0);
-  transition: transform 0.3s ease-out;
+  
+  /* ヘッダーアニメーション */
+  transition: background-color 0.3 ease-out;
 }
 
-#header.hide-header {
-  transform: translateY(-150%);
+#header.scrolled {
+  background: #ffaec9;
 }
 
 #header .logo {
@@ -50,73 +49,153 @@ body img {
   width: auto;
 }
 
-#header .header-title {
-  display: inline-block;
+/* ハンバーガーアイコン */
+.H-icon {
+  margin-right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  position: relative;
+  z-index: 1002;
 }
 
-#header::after {
-  content: "";
+.H-icon .line {
   display: block;
-  position: absolute;
-  bottom: -13px;
-  left: 0;
-  width: 100%;
-  height: 15px;
-  background-image: url(https://simulation-ryo.github.io/simulation/vote/img/triangle.png);
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  z-index: 1;
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
 }
 
+.H-icon .line:last-child {
+  margin-bottom: 0;
+}
+
+.H-icon[aria-expanded="true"] .line1 {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.H-icon[aria-expanded="true"] .line2 {
+  opacity: 0;
+}
+
+.H-icon[aria-expanded="true"] .line3 {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ハンバーガーメニュー */
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    linear-gradient(to top, #ff3399, #6699ff),
+    linear-gradient(to right, #9933ff, #ff6633);
+  background-blend-mode: screen;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.menu-list.is-open {
+  opacity: 1;
+}
+
+.menu-list li {
+  margin-bottom: 20px;
+}
+
+.menu-list li:last-child {
+  margin-bottom: 0;
+}
+
+.menu-list li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2em;
+  padding: 10px 20px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.menu-list li a:hover,
+.menu-list li a:focus {
+  color: #000
+}
+
+.menu-list[hidden] {
+  opacity: 0;
+}
+
+/* ヘッダー画像 */
 .header-img-container {
   text-align: center;
 }
 
 .header-img {
   display: block;
-  padding-top: 60px;
-  background-color: #ffaec9;
   width: 100%;
   height: auto;
 }
 
-/* グローバルナビゲーション */
-.g-nav {
-  position: relative;
-  margin-top: 0;
-  background-color: #ffaec9;
-}
-
-.g-nav ul {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.g-nav li {
-  margin: 0 10px;
-}
-
-.g-nav li a {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #fff;
-}
-
-.g-nav_icon img {
-  margin-top: 10px;
-  max-width: 32px;
-  max-height: 32px;
-}
-
 /* タブレットorPC (min-width: 768px) */
 @media (min-width: 768px) {
-  .header {
+  #header {
     height: 80px;
-    padding: 15px 50px;
+    padding: 15px 10px;
+    justify-content: space-between;
+  }
+
+  #header .logo {
+    height: 66px;
+    width: auto;
+    /* margin: 0 auto; */
+  }
+
+  .H-icon {
+    display: none;
+  }
+
+  .menu-list {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    opacity: 1;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  .menu-list li {
+    margin-bottom: 0;
+    margin: 0 15px;
+  }
+
+  .menu-list li a {
+    color: #fff;
+    font-size: 1em;
+    padding: 5px 10px;
+  }
+
+  .menu-list li a:hover,
+  .menu-list li a:focus {
+    color: #333;
+  }
+
+  .menu-list[hidden] {
+  opacity: 1;
   }
 }

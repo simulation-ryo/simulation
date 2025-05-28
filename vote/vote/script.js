@@ -1,3 +1,6 @@
+// ------------- //
+// 投票ページ更新 //
+// ------------- //
 document.addEventListener("DOMContentLoaded", () => {
   // 必要な要素の取得
   const castElements = document.querySelectorAll(".cast");
@@ -52,24 +55,44 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ヘッダー
+// ------- //
+// ヘッダー //
+// ------- //
 document.addEventListener('DOMContentLoaded', function() {
     const header = document.getElementById('header');
-    let lastScrollY = window.scrollY; // 前回のスクロール位置を記憶
+    const headerImgContainer = document.querySelector('.header-img-cntainer'); // メインコンテンツの開始位置を特定するために使用
 
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY; // 現在のスクロール位置
         const headerHeight = header.offsetHeight; // ヘッダーの高さを取得
 
-        // 下にスクロールしている場合
-        if (currentScrollY > lastScrollY && currentScrollY > headerHeight - 40) {
-            header.classList.add('hide-header'); // 'hide-header' クラスを追加して非表示にする
+        if (currentScrollY > headerImgContainer.offsetHeight - headerHeight) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
-        // 上にスクロールしている場合、またはページの最上部に戻った場合
-        else if (currentScrollY < lastScrollY || currentScrollY === 0) {
-            header.classList.remove('hide-header'); // 'hide-header' クラスを削除して表示にする
+    });
+});
+
+// ---------------- //
+// ハンバーガメニュー //
+// ---------------- //
+document.addEventListener('DOMContentLoaded', ()=> {
+    const hamburgerToggle = document.querySelector('.H-icon')
+    const primaryMenu = document.getElementById('primary-menu')
+
+    hamburgerToggle.addEventListener('click', () => {
+        const isExpanded = hamburgerToggle.getAttribute('aria-expanded') === 'true' || false;
+
+        if (isExpanded) {
+            primaryMenu.setAttribute('hidden','');
+            hamburgerToggle.setAttribute('aria-expanded','false');
+        } else {
+            primaryMenu.removeAttribute('hidden');
+            hamburgerToggle.setAttribute('aria-expanded','true');
         }
 
-        lastScrollY = currentScrollY; // 現在のスクロール位置を更新
+        primaryMenu.classList.toggle('is-open');
+        hamburgerToggle.classList.toggle('is-active')
     });
 });
