@@ -40,7 +40,7 @@ body img {
 #header.scrolled {
   background: #ffaec9;
     /* ヘッダーアニメーション */
-  transition: background-color 0.3 ease-out;
+  transition: background-color 0.3s ease-out;
 }
 
 #header .logo {
