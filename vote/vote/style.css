@@ -35,13 +35,12 @@ body img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
-  /* ヘッダーアニメーション */
-  transition: background-color 0.3 ease-out;
 }
 
 #header.scrolled {
   background: #ffaec9;
+    /* ヘッダーアニメーション */
+  transition: background-color 0.3s ease-out;
 }
 
 #header .logo {
